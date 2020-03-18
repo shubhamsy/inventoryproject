@@ -1,0 +1,39 @@
+<%= form_with(model: warehouse, local: true) do |form| %>
+  <% if warehouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+
+      <ul>
+        <% warehouse.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :product %>
+    <% @products = Product.all  %>
+    <%= select_tag "product_ids", options_from_collection_for_select(@products, 'id', 'name'),:name=>"warehouse[product_ids]",:include_blank=>"Select Product"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :pincoode %>
+    <%= form.text_field :pincoode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_capacity %>
+    <%= form.number_field :max_capacity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

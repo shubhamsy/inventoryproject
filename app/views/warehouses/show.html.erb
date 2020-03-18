@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wh code:</strong>
+  <%= @warehouse.wh_code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @warehouse.name %>
+</p>
+
+<p>
+  <strong>Pincoode:</strong>
+  <%= @warehouse.pincoode %>
+</p>
+
+<p>
+  <strong>Max capacity:</strong>
+  <%= @warehouse.max_capacity %>
+</p>
+
+<%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
+<%= link_to 'Back', warehouses_path %>
